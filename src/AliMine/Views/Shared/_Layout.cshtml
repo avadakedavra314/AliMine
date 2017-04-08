@@ -14,8 +14,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+
+    <!--Bootstrap-->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <script src="~/js/granim.js"></script>
+
     <link rel="stylesheet" href="~/css/site.css" />
+
+    
 </head>
 <body>
     <!--меню-->
@@ -23,10 +29,10 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="~/Home/Index">
                         <img alt="Brand" src="https://specnomer.com/i/star.png">
                     </a>
-                    <a href="~/Home/Index" class="navbar-brand">AliMine</a>
+                    <a href="~/Home/Index" class="navbar-brand"></a>
                 </div>
 
 
@@ -51,8 +57,11 @@
         </nav>
         <!--основной контент-->
         <div class="container">
-            @RenderBody()
+
+            @RenderBody() 
+            
         </div>
+
     </div>
     <!--Футер-->
     <div class="footer">
@@ -60,5 +69,27 @@
             &copy; 2017 AliMine. All rights reserved.
         </div>
     </div>
+
+
+    <!--jQuery-->
+    <script src="~/lib/jquery/dist/jquery.js" charset="utf-8"></script>
+
+    <script>
+        var granimInstance = new Granim({
+            element: '#canvas-image',
+            direction: 'top-bottom',
+            opacity: [1, .5, 0],
+            isPausedWhenNotInView: true,
+            states : {
+                "default-state": {
+                    gradients: [
+                        ['#485563', '#29323c', '#29323c'],
+                        ['#00c6ff', '#0072ff', '#0072ff']
+                    ],
+                    transitionSpeed: 10000
+                }
+            }
+        });
+    </script>
 </body>
 </html>

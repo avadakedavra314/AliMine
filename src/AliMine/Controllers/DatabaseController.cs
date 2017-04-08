@@ -74,7 +74,7 @@ namespace AliMine.Controllers
 
         [Authorize]
         [HttpGet]
-        [ActionName("Delete")]
+        [ActionName("DeleteCategory")]
         public async Task<IActionResult> ConfirmDeleteCategory(int? id)
         {
             if (id != null)
