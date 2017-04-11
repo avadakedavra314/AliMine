@@ -11,6 +11,7 @@ namespace AliMine.Controllers
     public class AccountController : Controller
     {
         private AliMineContext db;
+        int a = 5;
         public AccountController(AliMineContext context)
         {
             db = context;
