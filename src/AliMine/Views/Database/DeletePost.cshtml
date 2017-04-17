@@ -1,0 +1,29 @@
+﻿@model AliMine.Models.Post
+@{
+    ViewBag.Title = "Удаление " + Model.Title;
+}
+
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Публикация: @Model.Title</div>
+
+        <!-- List group -->
+        <ul class="list-group">
+            <li class="list-group-item">ID: @Html.DisplayFor(model => model.Id)</li>
+            <li class="list-group-item">Title: @Html.DisplayFor(model => model.Title)</li>
+            <li class="list-group-item">Content: @Html.DisplayFor(model => model.Content)</li>
+            <li class="list-group-item">ImgAlias: @Html.DisplayFor(model => model.ImgAlias)</li>
+            <li class="list-group-item">Category: @Html.DisplayFor(model => model.Category.Name)</li>
+        </ul>
+    </div>
+
+    <form asp-controller="Database" asp-action="DeletePost" method="post">
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Удалить" />
+        </div>
+        <a href="~/Database/Posts" class="btn btn-primary btn-lg btn-block" role="button">Назад</a>
+    </form>
+
+</div>

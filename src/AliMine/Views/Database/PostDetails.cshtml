@@ -1,0 +1,22 @@
+﻿@model AliMine.Models.Post
+@{
+    ViewBag.Title = "Публикация" + Model.Title;
+}
+
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Публикация @Model.Title</div>
+
+        <!-- List group -->
+        <ul class="list-group">
+            <li class="list-group-item">ID: @Model.Id</li>
+            <li class="list-group-item">Name: @Model.Title</li>
+            <li class="list-group-item">Description: @Model.Content</li>
+            <li class="list-group-item">Img: @Model.ImgAlias</li>
+            <li class="list-group-item">Category: @Model.Category?.Name</li>
+        </ul>
+    </div>
+    <a href="~/Database/Posts" class="btn btn-primary btn-lg btn-block" role="button">Назад</a>
+
+</div>

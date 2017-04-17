@@ -1,0 +1,57 @@
+﻿@model AliMine.Models.Post
+@{
+    ViewBag.Title = "Добавление публикации";
+}
+<form asp-action="CreatePost" asp-controller="Database">
+    <div class="container-fluid">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Добавление публикации</div>
+            <br>
+            <div class="container-fluid">
+
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Заголовок</label>
+                    <input type="text" asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Content" class="control-label">Содержание</label>
+                    <input type="text" asp-for="Content" class="form-control" />
+                    <span asp-validation-for="Content" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImgAlias" class="control-label">Путь к картинке</label>
+                    <input type="text" asp-for="ImgAlias" class="form-control" />
+                    <span asp-validation-for="ImgAlias" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label">Категория</label>
+                    <input type="text" asp-for="CategoryId" class="form-control" />
+                    <span asp-validation-for="CategoryId" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Добавить</button>
+        </div>
+        <a href="~/Database/Posts" class="btn btn-primary btn-lg btn-block" role="button">Назад</a>
+    </div>
+</form>
+@section scripts{
+
+    <environment names="Development">
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"
+                asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"
+                asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
+        </script>
+    </environment>
+}

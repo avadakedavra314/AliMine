@@ -103,5 +103,96 @@ namespace AliMine.Controllers
             return NotFound();
         }
 
+        // ПОСТЫ:
+
+        [Authorize]
+        public async Task<IActionResult> Posts()
+        {
+            IQueryable<Post> posts = db.Posts.Include(u=>u.Category);
+
+            return View(await posts.AsNoTracking().ToListAsync());
+        }
+
+
+        [Authorize]
+        public IActionResult CreatePost()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreatePost(Post post)
+        {
+
+            db.Posts.Add(post);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Posts");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> PostDetails(int? id)
+        {
+            if (id != null)
+            {
+                Post post = await db.Posts.Include(u => u.Category).FirstOrDefaultAsync(p => p.Id == id);
+                if (post != null)
+                    return View(post);
+            }
+            return NotFound();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> EditPost(int? id)
+        {
+            if (id != null)
+            {
+                Post post = await db.Posts.Include(u => u.Category).FirstOrDefaultAsync(p => p.Id == id);
+                if (post != null)
+                    return View(post);
+            }
+            return NotFound();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditPost(Post post)
+        {
+            db.Posts.Update(post);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Posts");
+        }
+
+        [Authorize]
+        [HttpGet]
+        [ActionName("DeletePost")]
+        public async Task<IActionResult> ConfirmDeletePost(int? id)
+        {
+            if (id != null)
+            {
+                Post post= await db.Posts.Include(u => u.Category).FirstOrDefaultAsync(p => p.Id == id);
+                if (post != null)
+                    return View(post);
+            }
+            return NotFound();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int? id)
+        {
+            if (id != null)
+            {
+                Post post = await db.Posts.Include(u => u.Category).FirstOrDefaultAsync(p => p.Id == id);
+                if (post != null)
+                {
+                    db.Posts.Remove(post);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Posts");
+                }
+            }
+            return NotFound();
+        }
+
     }
 }
