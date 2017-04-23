@@ -30,10 +30,12 @@
                     <a asp-action="PostDetails" asp-controller="Database" asp-route-id="@post.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
                     <a asp-action="EditPost" asp-controller="Database" asp-route-id="@post.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
                     <a asp-action="DeletePost" asp-controller="Database" asp-route-id="@post.Id"><span class="glyphicon glyphicon-trash"></span></a>
-                </td>
+                </td>           
             </tr>
         }
     </table>
 </div>
 
 <a class="btn btn-primary btn-lg btn-block" href="~/Database/CreatePost" role="button">Добавить Публикацию</a>
+    
+

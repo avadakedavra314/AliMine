@@ -1,4 +1,23 @@
-﻿@{
-    ViewData["Title"] = "Домашняя страница";
+﻿@model IEnumerable<AliMine.Models.Post>
+@{
+    ViewData["Title"] = "Публикации";
 }
 
+<div class="row">
+    @foreach (var post in Model)
+    {
+        <div class="col-md-4">
+            <h2>@post.Title</h2>
+            @if (post.Content.Length < 300)
+            {
+            <p>@post.Content</p>
+            }
+            else
+            {
+                <p>@post.Content.Substring(0,297)...</p>
+            }
+            <p><a class="btn btn-link" asp-action="PostDetails" asp-controller="Database" asp-route-id="@post.Id" role="button">Подробнее..</a></p>
+        </div> 
+    }
+    
+</div>

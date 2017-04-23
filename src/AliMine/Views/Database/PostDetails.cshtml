@@ -1,12 +1,12 @@
 ﻿@model AliMine.Models.Post
 @{
-    ViewBag.Title = "Публикация" + Model.Title;
+    ViewBag.Title = Model.Title;
 }
 
 <div class="container-fluid">
     <div class="panel panel-primary">
         <!-- Default panel contents -->
-        <div class="panel-heading">Публикация @Model.Title</div>
+        <div class="panel-heading">@Model.Title</div>
 
         <!-- List group -->
         <ul class="list-group">
