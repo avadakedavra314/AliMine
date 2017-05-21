@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using AliMine.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AliMine.Controllers
 {
@@ -117,6 +118,9 @@ namespace AliMine.Controllers
         [Authorize]
         public IActionResult CreatePost()
         {
+            SelectList category = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.Category = category;
+
             return View();
         }
 
@@ -145,6 +149,9 @@ namespace AliMine.Controllers
         [Authorize]
         public async Task<IActionResult> EditPost(int? id)
         {
+            SelectList category = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.Category = category;
+
             if (id != null)
             {
                 Post post = await db.Posts.Include(u => u.Category).FirstOrDefaultAsync(p => p.Id == id);

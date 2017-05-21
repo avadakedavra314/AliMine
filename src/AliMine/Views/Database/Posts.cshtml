@@ -3,6 +3,7 @@
     ViewData["Title"] = "Публикации";
 }
 
+
 <div class="panel panel-primary">
     <!-- Default panel contents -->
     <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> Публикации</div>
@@ -12,7 +13,7 @@
         <tr>
             <th>#</th>
             <th>Заголовок</th>
-            <th>Содержание</th>
+            <th>Ссылка</th>
             <th>Путь к картинке</th>
             <th>Категория</th>
             <th>Действия</th>
@@ -23,19 +24,17 @@
             <tr>
                 <td>@post.Id</td>
                 <td>@post.Title</td>
-                <td>@post.Content</td>
+                <td>@post.Content.Substring(0,70)</td>
                 <td>@post.ImgAlias</td>
                 <td>@post.Category?.Name</td>
                 <td>
                     <a asp-action="PostDetails" asp-controller="Database" asp-route-id="@post.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
                     <a asp-action="EditPost" asp-controller="Database" asp-route-id="@post.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
                     <a asp-action="DeletePost" asp-controller="Database" asp-route-id="@post.Id"><span class="glyphicon glyphicon-trash"></span></a>
-                </td>           
+                </td>
             </tr>
         }
     </table>
 </div>
 
 <a class="btn btn-primary btn-lg btn-block" href="~/Database/CreatePost" role="button">Добавить Публикацию</a>
-    
-

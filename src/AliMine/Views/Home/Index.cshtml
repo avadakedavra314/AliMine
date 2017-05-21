@@ -1,23 +1,45 @@
 ﻿@model IEnumerable<AliMine.Models.Post>
 @{
-    ViewData["Title"] = "Публикации";
+    ViewData["Title"] = "Домашняя страница";
 }
+<style>
+    .center {
+        text-align: center;
+    }
+</style>
 
-<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-9">
+        <div class="well">
+            <header>
+                <h1 class="text-center">AliExpress: лучшие находки этой недели для дома и красоты</h1>
+            </header>
+            <hr />
+            <article>
+                <h3 class="text-center">Стильная одежда, интересные аксессуары и полезные штуки для дома, которые мы нашли на AliExpress на этой неделе.</h3>
+            </article>
+        </div>
+</div>
+<div class="col-md-1"></div>
+
+
     @foreach (var post in Model)
     {
-        <div class="col-md-4">
-            <h2>@post.Title</h2>
-            @if (post.Content.Length < 300)
-            {
-            <p>@post.Content</p>
-            }
-            else
-            {
-                <p>@post.Content.Substring(0,297)...</p>
-            }
-            <p><a class="btn btn-link" asp-action="PostDetails" asp-controller="Database" asp-route-id="@post.Id" role="button">Подробнее..</a></p>
-        </div> 
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-9">
+                <div class="well">
+                    <p><img src="@post.ImgAlias" alt="Image" class="img-rounded center-block img-responsive"></p>
+                    <hr />
+                    <h3 class="text-center">@post.Title</h3>
+                    <hr />
+                    <div class="center">
+                        <p><a href="@post.Content" class="btn btn-primary btn-lg  btn-block">Купить</a></p>
+                    </div>
+                    <hr />
+                    <h4 class="text-center">@post.Category.Description</h4>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
     }
-    
-</div>

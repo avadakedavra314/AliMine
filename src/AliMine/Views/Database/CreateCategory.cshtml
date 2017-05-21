@@ -1,48 +1,47 @@
 ﻿@model AliMine.Models.Category
+@{
+    ViewBag.Title = "Добавление категории";
+}
+<form asp-action="CreateCategory" asp-controller="Database">
+    <div class="container-fluid">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Добавление Категории</div>
+            <br>
+            <div class="container-fluid">
 
-        @{
-            ViewBag.Title = "Добавление категории";
-        }
-            <form asp-action="CreateCategory" asp-controller="Database">
-                <div class="container-fluid">
-                    iv class="panel panel-primary">
-                        <div class="panel-heading">Добавление Категории</div>
-                        <br>
-                        <div class="container-fluid">
-
-                            <div class="validation" asp-validation-summary="ModelOnly"></div>
-                            <div class="form-group">
-                                <label asp-for="Name" class="control-label">Имя</label>
-                                <input type="text" asp-for="Name" class="form-control" />
-                                <span asp-validation-for="Name" />
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Description" class="control-label">Описание</label>
-                                <input type="text" asp-for="Description" class="form-control" />
-                                <span asp-validation-for="Description" />
-                            </div>
-                        </div>
-                    </iv>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Добавить</button>
-                    </div>
-                    <a href="~/Database/Categories" class="btn btn-primary btn-lg btn-block" role="button">Назад</a>
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Имя</label>
+                    <input type="text" asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" />
                 </div>
-            </form>
-            @section scripts{
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">Описание</label>
+                    <input type="text" asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Добавить</button>
+        </div>
+        <a href="~/Database/Categories" class="btn btn-primary btn-lg btn-block" role="button">Назад</a>
+    </div>
+</form>
+@section scripts{
 
-                <environment names="Development">
-                    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-                    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-                </environment>
-                <environment names="Staging,Production">
-                    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"
-                            asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
-                            asp-fallback-test="window.jQuery && window.jQuery.validator">
-                    </script>
-                    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"
-                            asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
-                            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
-                    </script>
-                </environment>
-            }
+    <environment names="Development">
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"
+                asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"
+                asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
+        </script>
+    </environment>
+}

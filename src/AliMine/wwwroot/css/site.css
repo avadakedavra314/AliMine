@@ -1,5 +1,6 @@
-﻿:root{
+﻿:root {
     --monroecolor: rgba(51, 122, 183, 0.65);
+    --whitebackground: rgba(255, 255, 255, 0.65);
 }
 #canvas-image {
     position: absolute;
@@ -20,7 +21,13 @@ body {
     background-image:url(/images/back2.jpg);
     background-size: 100%
 }
-
+.well {
+    background-color: var(--whitebackground);
+    border-radius: 20px;
+}
+.img-rounded{
+    border-radius: 40px;
+}
 .navbar-default {
     background-color: rgba(248, 248, 248, 0.55);
 }
